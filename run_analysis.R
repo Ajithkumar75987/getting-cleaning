@@ -1,3 +1,22 @@
+## set working directory
+setwd("C:/Users/lenovo/Desktop/New folder")
+library(dplyr)
+
+## download file
+fileurl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+download.file(fileurl, destfile = "C:/Users/lenovo/Desktop/New folder/run.zip", method = "curl")
+
+## zip file to unzip
+filename <- "run.zip"
+ if (!file.exists("UCI HAR Dataset")) { 
+       unzip(filename) 
+ }
+
+## read tables
+features <- read.table("UCI HAR Dataset/features.txt", col.names = c("n","functions"))
+activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("code", "activity"))
+subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
+
 # Merges the training and the test sets to create one data set
 X <- rbind(x_train, x_test)
 Y <- rbind(y_train, y_test)
